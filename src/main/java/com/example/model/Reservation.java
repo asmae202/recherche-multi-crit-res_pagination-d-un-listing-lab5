@@ -25,12 +25,12 @@ public class Reservation {
     @Column(length = 500)
     private String motif;
 
-    // Relation ManyToOne avec Utilisateur
+    // Définition de la relation ManyToOne vers l’entité Utilisateur
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "utilisateur_id", nullable = false)
     private Utilisateur utilisateur;
 
-    // Relation ManyToOne avec Salle
+    // Définition de la relation ManyToOne vers l’entité  Salle
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "salle_id", nullable = false)
     private Salle salle;
