@@ -27,11 +27,11 @@ public class Utilisateur {
     @Column(unique = true, nullable = false)
     private String email;
 
-    // Relation OneToMany avec Réservation
+    // Définition de la relation OneToMany vers l’entité Réservation
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reservation> reservations = new ArrayList<>();
 
-    // Constructeur par défaut requis par JPA
+    // Constructeur par défaut 
     public Utilisateur() {
     }
 
@@ -41,7 +41,7 @@ public class Utilisateur {
         this.email = email;
     }
 
-    // Méthodes utilitaires pour gérer la relation bidirectionnelle
+    // Méthodes pour gérer la relation bidirectionnelle
     public void addReservation(Reservation reservation) {
         reservations.add(reservation);
         reservation.setUtilisateur(this);
