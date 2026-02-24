@@ -25,11 +25,11 @@ public class Equipement {
     @Column(length = 500)
     private String description;
 
-    // Relation ManyToMany avec Salle
+   // Définition de la relation ManyToMany entre cette entité et Salle
     @ManyToMany(mappedBy = "equipements")
     private Set<Salle> salles = new HashSet<>();
 
-    // Constructeur par défaut requis par JPA
+    // Constructeur par défaut
     public Equipement() {
     }
 
