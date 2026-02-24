@@ -33,11 +33,12 @@ public class Salle {
     private String batiment;
     @Column(name = "etage")
     private Integer etage;
-    // Relation OneToMany avec Réservation
+     // Définition de la relation OneToMany  vers l’entité Réservation 
     @OneToMany(mappedBy = "salle", cascade = CascadeType.ALL)
     private List<Reservation> reservations = new ArrayList<>();
 
-    // Relation ManyToMany avec Équipement
+    // Définition de la relation ManyToMany  vers l’entité Équipement 
+
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "salle_equipement",
@@ -46,7 +47,7 @@ public class Salle {
     )
     private Set<Equipement> equipements = new HashSet<>();
 
-    // Constructeur par défaut requis par JPA
+    // Constructeur par défaut
     public Salle() {
     }
 
@@ -55,7 +56,7 @@ public class Salle {
         this.capacite = capacite;
     }
 
-    // Méthodes utilitaires pour gérer la relation bidirectionnelle avec Réservation
+    // Méthodes  pour gérer la relation bidirectionnelle avec Réservation
     public void addReservation(Reservation reservation) {
         reservations.add(reservation);
         reservation.setSalle(this);
@@ -66,7 +67,7 @@ public class Salle {
         reservation.setSalle(null);
     }
 
-    // Méthodes utilitaires pour gérer la relation ManyToMany avec Équipement
+    // Méthodes pour gérer la relation ManyToMany avec Équipement
     public void addEquipement(Equipement equipement) {
         equipements.add(equipement);
         equipement.getSalles().add(this);
