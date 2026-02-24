@@ -9,7 +9,7 @@ import java.util.Map;
 
 public interface SalleRepository {
 
-    // Méthode pour trouver les salles disponibles par créneau
+// Méthode utilisée pour vérifier quelles salles peuvent être réservées à un créneau donné
     List<Salle> findAvailableRooms(LocalDateTime start, LocalDateTime end);
 
     // Méthode pour la recherche multi-critères
